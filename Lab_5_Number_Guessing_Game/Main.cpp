@@ -11,15 +11,13 @@ Description:
 #include <ctime>
 
 using namespace std;
-
-int RamdomNumber()
-
-
-bool checkGuess()
+int RandomNumber(int min, int max);
+int getUserGuess();
+bool checkGuess(int userGuess_, int randomNumber, int num_of_guesses);
 
 
 
-void NumerGuessingGame()
+void printNumberGuessingGame()
 {
 	cout << "Welcome to the Number Guessing Game!" << endl;
 	cout << "I have selected a number between 0 and 100." << endl;
@@ -42,6 +40,22 @@ void PlayAgain()
 	cout << "Yes or No" << endl;
 }
 
+bool checkGuess(int userGuess_, int randomNumber, int num_of_guesses)
+{
+	if (userGuess_ == randomNumber)
+	{
+		WinningMessage1();
+		return true;
+	}
+	else
+	{
+		LosingMessage1(randomNumber);
+		return false;
+	}
+}
+
+
+
 int main()
 { 
 	srand(static_cast<unsigned int>(time(0))); // Seed the random number generator
@@ -49,20 +63,33 @@ int main()
 	int min = 0;
 	int max = 100;
 	int maxGuesses = 20;
-	int randomnumber = RamdomNumber(min, max);
+	int randomnumber = RandomNumber(min, max);
 
-	while()
+	printNumberGuessingGame();
+
+	int userGuess = 0;
+	int attempts = 0;
+
+	while(attempts < maxGuesses)
 	{
-		if ()
+		userGuess = getUserGuess();
+		if (checkGuess(userGuess, RandomNumber, attempts))
 		{
-			printWinningMessage1();
-		
+			return 0;
+			attempts == attempts + 1;
+
+			WinningMessage1();
+		}
+
+		if (attempts > maxGuesses)
+		{
+			LosingMessage1(randomnumber);
 		}
 		else
 		{
-			printLosingMessage1(randomnumber);
+			cout << " Try again! You have " << maxGuesses - attempts << " attempts left." << endl;
 		}
-	
+			
 	
 	}
 
