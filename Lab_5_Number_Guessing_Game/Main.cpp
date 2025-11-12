@@ -40,22 +40,6 @@ void PlayAgain()
 	cout << "Yes or No" << endl;
 }
 
-bool checkGuess(int userGuess_, int randomNumber, int num_of_guesses)
-{
-	if (userGuess_ == randomNumber)
-	{
-		WinningMessage1();
-		return true;
-	}
-	else
-	{
-		LosingMessage1(randomNumber);
-		return false;
-	}
-}
-
-
-
 int main()
 { 
 	srand(static_cast<unsigned int>(time(0))); // Seed the random number generator
